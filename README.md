@@ -1,5 +1,8 @@
 # Star-Shaped Denoising Diffusion Probabilistic Models
-This repo contains the official PyTorch implementation for the paper [Star-Shaped Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2302.05259).
+This repo contains the official PyTorch implementation for the paper [Star-Shaped Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2302.05259)
+
+by Andrey Okhotin*, Dmitry Molchanov*, Vladimir Arkhipkin, Grigory Bartosh, Viktor Ohanesian, Aibek
+Alanov, Dmitry Vetrov
 
 ## Abstract:
 Denoising Diffusion Probabilistic Models (DDPMs) provide the foundation for
