@@ -21,5 +21,5 @@ and find it competitive even on image data, where Beta SS-DDPM achieves results
 comparable to a Gaussian DDPM.
 
 
-# Release Date: Oct 28 '23
+# Release Date: Nov 4 '23
 Do not miss!)
