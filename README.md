@@ -16,8 +16,6 @@ the recent breakthroughs in generative modeling. Their Markovian structure make 
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 
-[TOC]
-
 ## How to use this repo?
 Main SS-DDPM logic described in "lib/diffusion" directory. This can be enough if you want to
 * better understand the proposed approach
