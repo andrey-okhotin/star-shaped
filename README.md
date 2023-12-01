@@ -41,6 +41,7 @@ Repo structure:
 ## Installing dependencies
 This repo tested with torch==1.12.0+cu113 torchvision==0.13.0+cu113
 ```bash
+git clone https://github.com/andrey-okhotin/star-shaped
 pip install -r requirements.txt
 
 # only if you don't have pytorch or you pytorch version < 1.11
