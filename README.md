@@ -2,9 +2,10 @@
 This repo contains the official PyTorch implementation for the paper [Star-Shaped Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2302.05259) -- approach to creating non-Gaussian diffusion models applicable to various non-euclidean manifolds.
 
 by Andrey Okhotin\*, Dmitry Molchanov\*, Vladimir Arkhipkin, Grigory Bartosh, Viktor Ohanesian, Aibek Alanov, Dmitry Vetrov
+
 assistent: Sergei Kholkin
 
-![](https://sun9-55.userapi.com/impg/xckPbfksTIv4uyqOKGKJFTA5C20ANlmHqegEFg/G7Gj3suJ2BQ.jpg?size=1327x768&quality=96&sign=cb7cec7ab68314c63b4217ce5caa1b6e&type=album)
+![](https://github.com/andrey-okhotin/star-shaped/blob/main/results/demo.jpg)
 
 
 ## Abstract:
@@ -15,6 +16,7 @@ the recent breakthroughs in generative modeling. Their Markovian structure make 
 # Documentation
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+
 
 ## How to use this repo?
 Main SS-DDPM logic described in "lib/diffusion" directory. This can be enough if you want to
