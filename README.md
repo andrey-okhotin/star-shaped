@@ -51,11 +51,7 @@ pip install -r requirements.txt
 pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
 
 # only for experiments with synthetic data, otherwise you can just comment all 'import npeet'
-git clone https://github.com/gregversteeg/NPEET.git
-cd NPEET
-pip install .
-cd ../
-rm -rf NPEET
+git clone https://github.com/gregversteeg/NPEET.git && cd NPEET && pip install . && cd ../ && rm -rf NPEET
 ```
 Downloading content of **datasets** folder - necessary for all pipelines. This command may take about 5 minutes.
 ```bash
