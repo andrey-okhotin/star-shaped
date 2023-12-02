@@ -54,7 +54,7 @@ def training_cifar10(process, args):
         'batch_size'  : 128,
         'num_workers' : 4
     })
-    config.n_epochs = 2001
+    config.n_epochs = 1201
     config.optimization_config = ConfigDict({
         'optimizer' : {
             'method' : 'Adam',
@@ -78,7 +78,7 @@ def training_cifar10(process, args):
         'clip_grad_norm' : 1.0
     })
     config.metrics_config = ConfigDict({
-        'validation_freq' : 100,
+        'validation_freq' : 50,
         'metrics_list' : []
     })
 
@@ -94,7 +94,7 @@ def training_cifar10(process, args):
     })
     config.checkpoints = ConfigDict({
         'folder' : args.save_folder,
-        'saving_freq' : 10,
+        'saving_freq' : 50,
         'reset_previous' : True
     })
     config.logs_file = args.logs_file
