@@ -45,7 +45,7 @@ git clone https://github.com/andrey-okhotin/star-shaped
 cd star-shaped
 pip install -r requirements.txt
 
-# only if you don't have pytorch or you pytorch version < 1.11
+# only if you don't have pytorch or your pytorch version < 1.11
 pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
 
 # only for experiments with synthetic data, otherwise you can just comment all 'import npeet'
