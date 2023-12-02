@@ -55,15 +55,13 @@ pip install .
 cd ../
 rm -rf NPEET
 ```
-Downloading **datasets** folder (necessary for all pipelines):
+Downloading content of **datasets** folder - necessary for all pipelines. This command may take about 5 minutes.
 ```bash
-wget --no-check-certificate -r 'https://drive.google.com/uc?export=download&id=1zzqWETB_dRMc7p4YfKxoWfTMIqGHLDEj' -O datasets.7z
-py7zr x datasets.7z
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Mwx2BxILkANxnzgiP005oB2Z-oHvCdyk' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1Mwx2BxILkANxnzgiP005oB2Z-oHvCdyk" -O datasets.7z && rm -rf /tmp/cookies.txt && py7zr x datasets.7z && rm datasets.7z
 ```
-Downloading **pretrained_models** folder (not necessary for training pipelines):
+Downloading content of **pretrained_models** folder - not necessary for training pipelines. This command may take about 3 minutes.
 ```bash
-wget --no-check-certificate -r 'https://drive.google.com/uc?export=download&id=1qdguMPPtYLB7ZgkwMpoGwMIdQgXpIuI4' -O pretrained_models.7z
-py7zr x pretrained_models.7z
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1qdguMPPtYLB7ZgkwMpoGwMIdQgXpIuI4' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1qdguMPPtYLB7ZgkwMpoGwMIdQgXpIuI4" -O pretrained_models.7z && rm -rf /tmp/cookies.txt && py7zr x pretrained_models.7z && rm pretrained_models.7z
 ```
 
 ## Available pipelines
