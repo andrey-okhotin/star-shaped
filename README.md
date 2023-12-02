@@ -5,7 +5,7 @@ by Andrey Okhotin\*, Dmitry Molchanov\*, Vladimir Arkhipkin, Grigory Bartosh, Vi
 
 assistent: Sergei Kholkin
 
-<img src="https://github.com/andrey-okhotin/star-shaped/blob/main/results/demo.jpg" width="1000">
+<img src="https://github.com/andrey-okhotin/star-shaped/blob/main/results/demo.jpg" width="969" height="558">
 
 
 ## Abstract:
