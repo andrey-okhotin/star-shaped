@@ -121,11 +121,12 @@ If you run exactly the same commands you will get NLL ~ 1.61 .
 
 
 ```python
-@inproceedings{OkhotinMolchanov2023ssddpm,
-	author={Andrey Okhotin*, Dmitry Molchanov*, Vladimir Arkhipkin, Grigory Bartosh, Viktor Ohanesian, Aibek Alanov, Dmitry Vetrov},
-	title={Star-Shaped Denoising Diffusion Probabilistic Models},
-	booktitle={Proc. NeurIPS},
-	year={2023}
+@inproceedings{okhotin2023star,
+    author={Andrey Okhotin, Dmitry Molchanov, Vladimir Arkhipkin, Grigory Bartosh, Viktor Ohanesian, Aibek Alanov and Dmitry Vetrov},
+    title={Star-Shaped Denoising Diffusion Probabilistic Models},
+    booktitle={Advances in Neural Information Processing Systems},
+    volume={36},
+    year={2023}
 }
 ```
 
