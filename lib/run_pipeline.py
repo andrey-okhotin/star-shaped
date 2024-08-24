@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 
-# run only from 'SS-DDPM' folder
+# run only from 'star-shaped' folder
 
 def main():
     """
