@@ -9,7 +9,7 @@ import torch
 import torch.multiprocessing as mp
 import torch.distributed as dist
 
-# run only from 'SS-DDPM' folder
+# run only from 'star-shaped' folder
 sys.path.append(os.path.join(os.getcwd(), 'lib'))
 
 from console_scripts.cluster_utils import logger_print, logger_reset
