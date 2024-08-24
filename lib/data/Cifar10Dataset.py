@@ -48,7 +48,7 @@ class Cifar10Dataset:
             Normalize(mean=0.5, std=0.5)
         ])
         self.train_loader = DataLoader(
-            CIFAR10(root='/opt/software/datasets/cifar/', download=False, 
+            CIFAR10(root=base_datasets_root, download=False, 
                     train=True, transform=train_transforms),
             batch_size=batch_size,
             shuffle=False,
@@ -56,7 +56,7 @@ class Cifar10Dataset:
             num_workers=self.num_workers
         )
         self.validation_loader = DataLoader(
-            CIFAR10(root='/opt/software/datasets/cifar/', download=False, 
+            CIFAR10(root=base_datasets_root, download=False, 
                     train=False, transform=validation_transforms),
             batch_size=batch_size,
             shuffle=False,
