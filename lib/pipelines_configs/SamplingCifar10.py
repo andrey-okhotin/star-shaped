@@ -7,12 +7,6 @@ from diffusion.default_diffusion_configs import get_default_diffusion
 
 
 
-def choose_max_batch_size(total_memory):
-    return round(total_memory * 800 / 10.5)
-
-
-
-
 def sampling_cifar10(process, args):  
     """
     DESCRIPTION:
@@ -54,7 +48,7 @@ def sampling_cifar10(process, args):
     """
     # memory reservation and choosing optimal batch size
     max_memory_usage = memory_reservation(process.gpu, logger_print)
-    batch_size = choose_max_batch_size(max_memory_usage)
+    batch_size = args.batch_size
     num_samples_per_node = args.num_samples // process.world_size
     if process.is_root_process:
         num_samples_per_node += args.num_samples % process.world_size
