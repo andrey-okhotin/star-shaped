@@ -7,12 +7,6 @@ from diffusion.default_diffusion_configs import get_default_diffusion
 
 
 
-def choose_max_batch_size(total_memory):
-    return round(total_memory * 300 / 10.5)
-
-
-
-
 def sampling_text8(process, args):
     """
     DESCRIPTION:
@@ -37,7 +31,7 @@ def sampling_text8(process, args):
     """
     # memory reservation and choosing optimal batch size
     max_memory_usage = memory_reservation(process.gpu, logger_print)
-    batch_size = choose_max_batch_size(max_memory_usage)
+    batch_size = args.batch_size
     num_samples_per_node = args.num_samples // process.world_size + 1
     batch_size = min(batch_size, num_samples_per_node)
     logger_print(f'proc: {process.rank} batch_size: {batch_size}')
