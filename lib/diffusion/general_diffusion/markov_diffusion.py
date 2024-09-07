@@ -255,7 +255,7 @@ class MarkovDiffusion(GeneralDiffusion):
         # logs
         for i in range(len(pred)):
             pred[i] = abs(pred[i] - batch['xt'].cpu())
-        pred = torch.stack([ batch['xt'].cpu() ] + pred))
+        pred = torch.stack([ batch['xt'].cpu() ] + pred)
         dir = f"{get_repo_root()}/../app/stability_packs"
         torch.save(pred, f"{dir}/pack{len(os.listdir(dir))}.pt")
         # logs
