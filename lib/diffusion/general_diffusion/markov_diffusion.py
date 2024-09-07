@@ -2,7 +2,8 @@ import torch
 
 from diffusion.general_diffusion.general_diffusion import GeneralDiffusion
 
-
+import os
+from saving_utils.get_repo_root import get_repo_root
 
 
 class MarkovDiffusion(GeneralDiffusion):
@@ -226,6 +227,11 @@ class MarkovDiffusion(GeneralDiffusion):
         reverse_time_iterator = self.time_distribution.reverse_time_iterator(
             batch, start_from=self.num_steps-1
         )
+
+        # logs
+        pred = []
+        # logs
+        
         for t_vector in reverse_time_iterator:
             batch['t'] = t_vector.to(batch['device'])
             t_value = batch['t'][0].item()
@@ -241,6 +247,19 @@ class MarkovDiffusion(GeneralDiffusion):
                 batch['xt'],
                 batch['t']
             )
+
+            # logs
+            pred = [ batch['x0_prediction'].clone().cpu() ] + pred
+            # logs
+
+        # logs
+        for i in range(len(pred)):
+            pred[i] = abs(pred[i] - batch['xt'].cpu())
+        pred = torch.stack([ batch['xt'].cpu() ] + pred))
+        dir = f"{get_repo_root()}/../app/stability_packs"
+        torch.save(pred, f"{dir}/pack{len(os.listdir(dir))}.pt")
+        # logs
+        
         result_object = batch['xt'].cpu().clone()
         return result_object
 
