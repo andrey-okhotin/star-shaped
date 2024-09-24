@@ -22,9 +22,6 @@ class UniversalDiffusionSampler:
         self.diffusion = init_diffusion(config.diffusion)
         self.model = init_model(config.model)
 
-        main_folder = os.path.join(get_repo_root(), '..', 'app', config.save_folder)
-        self.folder = os.path.join(main_folder, 'generated_samples')
-
         if os.path.isabs(config.save_folder):
             config.save_folder = os.path.basename(os.path.normpath(config.save_folder))
         main_folder = os.path.join(get_repo_root(), '..', 'app', config.save_folder)
