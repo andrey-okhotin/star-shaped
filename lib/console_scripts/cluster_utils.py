@@ -22,7 +22,10 @@ def save_config(config, rank):
 
 
 def logger_print(*args, **kwargs):
-    path = os.path.join(get_repo_root(), logger_print.file)
+    if os.path.isabs(logger_print.file):
+        path = logger_print.file
+    else:
+        path = os.path.join(get_repo_root(), '..', 'app', logger_print.file)
     with open(path, 'a') as f:
         for message in args:
             message = str(message) + " "
@@ -37,7 +40,10 @@ def logger_print(*args, **kwargs):
 
 
 def logger_reset():
-    path = os.path.join(get_repo_root(), logger_print.file)
+    if os.path.isabs(logger_print.file):
+        path = logger_print.file
+    else:
+        path = os.path.join(get_repo_root(), '..', 'app', logger_print.file)
     with open(path, 'w') as f:
         f.write('       ----------------------------\n')
         f.write('       |          LOGGER          |\n')
