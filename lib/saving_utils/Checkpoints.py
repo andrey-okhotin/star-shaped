@@ -31,9 +31,13 @@ class Checkpoints:
         
         period = checkpoints_config['saving_freq']
         self.saving_rule = lambda epoch: isinstance(epoch, int) and (epoch % period == 0)
+
+        if os.path.isabs(model_config['pretrained_model']):
+            self.checkpoints_folder = checkpoints_config['folder']
+        else:
+            checkpoints_path = os.path.join(get_repo_root(), '..', 'app')
+            self.checkpoints_folder = os.path.join(checkpoints_path, checkpoints_config['folder'])
         
-        checkpoints_path = os.path.join(get_repo_root(), 'checkpoints')
-        self.checkpoints_folder = os.path.join(checkpoints_path, checkpoints_config['folder'])
         if os.path.exists(self.checkpoints_folder):
             if 'reset_previous' in checkpoints_config.keys() and checkpoints_config['reset_previous']:
                 shutil.rmtree(self.checkpoints_folder)
