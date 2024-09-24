@@ -42,21 +42,16 @@ def default_cifar10_config():
 
 
 def init_ncsnpp(model_config):
-    switch_default_configs = {
-        'ncsnpp-cifar10' : default_cifar10_config
-    }
-
     if 'default' in model_config.keys():
-        cifar10_config = switch_default_configs[model_config['default']]()
-        return NCSNpp(cifar10_config)
+        return NCSNpp(default_cifar10_config())
 
     elif 'pretrained_model' in model_config.keys():
-        model_domain = model_config['pretrained_model'].split('_')[0]
-        model = NCSNpp(switch_default_configs[model_domain]())
+        model = NCSNpp(default_cifar10_config())
         if os.path.isabs(model_config['pretrained_model']):
-            path = model_config['pretrained_model']
-        else:
-            path = os.path.join(get_repo_root(), '..', 'app', 'pretrained_models', model_config['pretrained_model'])
+            model_config['pretrained_model'] = os.path.basename(os.path.normpath(model_config['pretrained_model']))
+        path = os.path.join(get_repo_root(), '..', 'app', 'pretrained_models', model_config['pretrained_model'])
+        if not os.path.exists(path):
+            raise ValueError("You need to put model checkpoint in folder \"pretrained_model\" in your current directory.")
         state_dict = torch.load(path, map_location='cpu')
         state_dict = { k.removeprefix('module.') : v for k, v in state_dict.items() }
         model.load_state_dict(state_dict)
