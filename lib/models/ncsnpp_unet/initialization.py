@@ -53,7 +53,10 @@ def init_ncsnpp(model_config):
     elif 'pretrained_model' in model_config.keys():
         model_domain = model_config['pretrained_model'].split('_')[0]
         model = NCSNpp(switch_default_configs[model_domain]())
-        path = os.path.join(get_repo_root(), 'pretrained_models', model_config['pretrained_model'])
+        if os.path.isabs(model_config['pretrained_model']):
+            path = model_config['pretrained_model']
+        else:
+            path = os.path.join(get_repo_root(), '..', 'app', 'pretrained_models', model_config['pretrained_model'])
         state_dict = torch.load(path, map_location='cpu')
         state_dict = { k.removeprefix('module.') : v for k, v in state_dict.items() }
         model.load_state_dict(state_dict)
