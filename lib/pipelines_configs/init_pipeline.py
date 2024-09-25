@@ -24,7 +24,7 @@ def init_pipeline(pipeline_name):
 
 
 
-def set_pipelines_arguments(args_cache, args_from):
+def set_pipelines_arguments(parser):
     """
     DESCRIPTION:
         Add following arguments for all available pipelines. There are three types
@@ -109,36 +109,17 @@ def set_pipelines_arguments(args_cache, args_from):
         <>  parser -> argparse.ArgumentParser()
 
     """
-    if args_from == 'cmd':
-        parser = args_cache
-        parser.add_argument('-pipeline', '--pipeline', default='', type=str)
-        parser.add_argument('-diffusion', '--diffusion', default='', type=str)
-        parser.add_argument('-pretrained_model', '--pretrained_model', default='', type=str)
-        parser.add_argument('-data', '--data', default='', type=str)
-        parser.add_argument('-loss', '--loss', default='', type=str)
-        parser.add_argument('-sampling_method', '--sampling_method', default='', type=str)
-        parser.add_argument('-num_samples', '--num_samples', default=20, type=int)
-        parser.add_argument('-num_sampling_steps', '--num_sampling_steps', default=-1, type=int)
-        parser.add_argument('-batch_size', '--batch_size', default=20, type=int)
-        parser.add_argument('-num_iwae_trajectories', '--num_iwae_trajectories', type=int)
-        parser.add_argument('-dataset_part', '--dataset_part', type=str)
-        parser.add_argument('-save_folder', '--save_folder', default='', type=str)
-        parser.add_argument('-logs_file', '--logs_file', default='log_progress.txt', type=str)
-        
-    elif args_from == 'environ':
-        args = args_cache
-        args.pipeline = os.environ.get('args.pipeline', '')
-        args.diffusion = os.environ.get('args.diffusion', '')
-        args.pretrained_model = os.environ.get('args.pretrained_model', '')
-        args.data = os.environ.get('args.data', '')
-        args.loss = os.environ.get('args.loss', '')
-        args.sampling_method = os.environ.get('args.sampling_method', '')
-        args.num_samples = os.environ.get('args.num_samples', 20)
-        args.num_sampling_steps = os.environ.get('args.num_sampling_steps', -1)
-        args.batch_size = os.environ.get('args.batch_size', 20)
-        args.num_iwae_trajectories = os.environ.get('args.num_iwae_trajectories', 1)
-        args.dataset_part = os.environ.get('args.dataset_part', '')
-        args.save_folder = os.environ.get('args.save_folder', '')
-        args.logs_file = os.environ.get('args.logs_file', '')
-    
+    parser.add_argument('-pipeline', '--pipeline', default='', type=str)
+    parser.add_argument('-diffusion', '--diffusion', default='', type=str)
+    parser.add_argument('-pretrained_model', '--pretrained_model', default='', type=str)
+    parser.add_argument('-data', '--data', default='', type=str)
+    parser.add_argument('-loss', '--loss', default='', type=str)
+    parser.add_argument('-sampling_method', '--sampling_method', default='', type=str)
+    parser.add_argument('-num_samples', '--num_samples', default=20, type=int)
+    parser.add_argument('-num_sampling_steps', '--num_sampling_steps', default=-1, type=int)
+    parser.add_argument('-batch_size', '--batch_size', default=20, type=int)
+    parser.add_argument('-num_iwae_trajectories', '--num_iwae_trajectories', type=int)
+    parser.add_argument('-dataset_part', '--dataset_part', type=str)
+    parser.add_argument('-save_folder', '--save_folder', default='', type=str)
+    parser.add_argument('-logs_file', '--logs_file', default='log_progress.txt', type=str)
     pass
