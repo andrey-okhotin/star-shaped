@@ -20,8 +20,13 @@ def main():
     
     # for disabling tensorflow warnings
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-    
-    list_of_gpus = sys.argv[2].split('_')
+
+    device = os.environ.get("args.gpu", "")
+    if device == "":
+        list_of_gpus = sys.argv[2].split('_')
+    else:
+        list_of_gpus = device.split('_')
+
     num_processes = len(list_of_gpus)
     runner = os.path.join('lib', 'console_scripts', 'PipelinesRunner.py')
     program_name = 'python ' + runner + ' '
