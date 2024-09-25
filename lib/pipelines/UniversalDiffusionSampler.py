@@ -33,12 +33,14 @@ class UniversalDiffusionSampler:
                 os.mkdir(main_folder)
                 os.mkdir(self.folder)
             else:
-                time.sleep(360)
+                time.sleep(60)
         else:
             if os.path.exists(main_folder):
                 shutil.rmtree(main_folder)
             os.mkdir(main_folder)
             os.mkdir(self.folder)
+        os.chmod(main_folder, 0o444)
+        os.chmod(self.folder, 0o444)
         pass
 
 
