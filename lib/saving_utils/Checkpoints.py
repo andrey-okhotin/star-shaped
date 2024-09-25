@@ -46,7 +46,7 @@ class Checkpoints:
                 print('Existing checkpoints in folder would be replaced by their duplicates.')
         else:
             os.mkdir(self.checkpoints_folder)
-        os.chmod(self.checkpoints_folder, 0o444)
+        os.chmod(self.checkpoints_folder, 0o777)
         pass
         
     
