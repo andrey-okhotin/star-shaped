@@ -80,27 +80,13 @@ def main():
     
     """
     torch.multiprocessing.freeze_support()
-    parser = argparse.ArgumentParser()
-    device = os.environ.get("args.gpu", "")
     
-    if device == "":
-        parser.add_argument('-gpu', '--gpu', default='', type=str)
-        parser.add_argument('-port', '--port', default='8900', type=str)
-        set_pipelines_arguments(parser, args_from='cmd')
-    else:
-        args = ConfigDict({})
-        args.gpu = device
-        args.port = os.environ.get('args.port', '8900')
-        set_pipelines_arguments(args, args_from='environ')
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-gpu', '--gpu', default='', type=str)
+    parser.add_argument('-port', '--port', default='8900', type=str)
     parser.add_argument('-nr', '--nr', default=0, type=int)
-    cmd_args = parser.parse_args()
-    if device == "":
-        args = cmd_args
-        print(f"\n\n      cmd : {args.gpu}   \n\n", flush=True)
-    else:
-        args.nr = cmd_args.nr
-        print(f"\n\n      environ : {args.gpu}    \n\n", flush=True)
+    set_pipelines_arguments(parser)
+    args = parser.parse_args()
     args.gpu = tuple(map(int, args.gpu.split('_')))   
 
     # spawn processes with defined pipeline
