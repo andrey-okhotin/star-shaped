@@ -43,7 +43,7 @@ def pipelines_runner(rank, args):
         )
 
     # init logger for tracking pipeline progress
-    logger_print.file = args.save_folder
+    logger_print.file = f"logs_{args.save_folder}.txt"
     if process.is_root_process:
         logger_reset()
     else:
