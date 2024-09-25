@@ -81,22 +81,26 @@ def main():
     """
     torch.multiprocessing.freeze_support()
     parser = argparse.ArgumentParser()
+    device = os.environ.get("args.gpu", "")
     
-    # myltiprocessing part
-    parser.add_argument('-gpu', '--gpu', default='', type=str)
-    parser.add_argument('-port', '--port', default='8900', type=str)
-    
-    # automaticly set by run_pipeline.py function
-    parser.add_argument('-nr', '--nr', default=0, type=int,
-                        help='ranking within the nodes')
-    
-    # set experiment arguments: dataset, nn, diffusion_method, logs folder
-    set_pipelines_arguments(parser)
-    
-    # preprocess args
-    args = parser.parse_args()
-    args.gpu = tuple(map(int, args.gpu.split('_')))
-    
+    if device == "":
+        parser.add_argument('-gpu', '--gpu', default='', type=str)
+        parser.add_argument('-port', '--port', default='8900', type=str)
+        set_pipelines_arguments(parser, args_from='cmd')
+    else:
+        args = ConfigDict({})
+        args.gpu = device
+        args.port = os.environ.get('args.port', '8900')
+        set_pipelines_arguments(args, args_from='environ')
+
+    parser.add_argument('-nr', '--nr', default=0, type=int)
+    cmd_args = parser.parse_args()
+    if device == "":
+        args = cmd_args
+    else:
+        args.nr = cmd_args.nr
+    args.gpu = tuple(map(int, args.gpu.split('_')))   
+
     # spawn processes with defined pipeline
     os.environ['MASTER_ADDR'] = '127.0.0.1'
     os.environ['MASTER_PORT'] = args.port
