@@ -35,7 +35,7 @@ def main():
     for proc_id in range(num_processes):
         process_task = program_name + " ".join(sys.argv[1:]) + f" -nr {proc_id}"
         print(process_task, flush=True)
-        processes.append(subprocess.Popen(process_task, env=os.environ.copy()))
+        processes.append(subprocess.Popen(process_task, shell=True, env=os.environ.copy()))
     exit_codes = [ p.wait() for p in processes ]
     print(exit_codes, flush=True)
 
