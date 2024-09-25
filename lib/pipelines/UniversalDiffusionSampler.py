@@ -39,8 +39,8 @@ class UniversalDiffusionSampler:
                 shutil.rmtree(main_folder)
             os.mkdir(main_folder)
             os.mkdir(self.folder)
-        os.chmod(main_folder, 0o444)
-        os.chmod(self.folder, 0o444)
+        os.chmod(main_folder, 0o777)
+        os.chmod(self.folder, 0o777)
         pass
 
 
