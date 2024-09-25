@@ -1,3 +1,5 @@
+import os
+
 from pipelines_configs.TrainingCifar10 import training_cifar10
 from pipelines_configs.SamplingCifar10 import sampling_cifar10
 from pipelines_configs.TrainingText8 import training_text8
