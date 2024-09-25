@@ -21,11 +21,16 @@ def main():
     # for disabling tensorflow warnings
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-    device = os.environ.get("args.gpu", "")
+    device = os.environ.get("PIPELINE_ARG.gpu", "")
     if device == "":
         list_of_gpus = sys.argv[2].split('_')
+        args = ""
     else:
-        list_of_gpus = device.split('_')
+        args = ""
+        prefix_len = len('PIPELINE_ARG.')
+        for k, v in os.environ.items():
+            if k[:prefix_len] == 'PIPELINE_ARG.':
+                args = args + f" -{k[:prefix_len]} {v}"
 
     num_processes = len(list_of_gpus)
     runner = os.path.join('lib', 'console_scripts', 'PipelinesRunner.py')
@@ -33,9 +38,9 @@ def main():
     processes = []
     print("", flush=True)
     for proc_id in range(num_processes):
-        process_task = program_name + " ".join(sys.argv[1:]) + f" -nr {proc_id}"
+        process_task = program_name + " ".join(sys.argv[1:]) + args + f" -nr {proc_id}"
         print(process_task, flush=True)
-        processes.append(subprocess.Popen(process_task, shell=True, env=os.environ.copy()))
+        processes.append(subprocess.Popen(process_task, shell=True))
     exit_codes = [ p.wait() for p in processes ]
     print(exit_codes, flush=True)
 
