@@ -26,6 +26,7 @@ def main():
         list_of_gpus = sys.argv[2].split('_')
         args = ""
     else:
+        list_of_gpus = device.split('_')
         args = ""
         prefix_len = len('PIPELINE_ARG.')
         for k, v in os.environ.items():
