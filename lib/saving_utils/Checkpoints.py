@@ -32,7 +32,7 @@ class Checkpoints:
         period = checkpoints_config['saving_freq']
         self.saving_rule = lambda epoch: isinstance(epoch, int) and (epoch % period == 0)
 
-        if os.path.isabs(model_config['pretrained_model']):
+        if os.path.isabs(checkpoints_config['folder']):
             checkpoints_config['folder'] = os.path.basename(os.path.normpath(checkpoints_config['folder']))
         checkpoints_path = os.path.join(get_repo_root(), '..', 'app')
         self.checkpoints_folder = os.path.join(checkpoints_path, checkpoints_config['folder'])
