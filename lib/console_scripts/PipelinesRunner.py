@@ -97,8 +97,10 @@ def main():
     cmd_args = parser.parse_args()
     if device == "":
         args = cmd_args
+        print(f"\n\n      cmd : {args.gpu}   \n\n", flush=True)
     else:
         args.nr = cmd_args.nr
+        print(f"\n\n      environ : {args.gpu}    \n\n", flush=True)
     args.gpu = tuple(map(int, args.gpu.split('_')))   
 
     # spawn processes with defined pipeline
