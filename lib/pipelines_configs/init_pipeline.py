@@ -122,6 +122,5 @@ def set_pipelines_arguments(parser):
     parser.add_argument('-dataset_part', '--dataset_part', type=str)
 
     # saving args
-    parser.add_argument('-logs_file', '--logs_file', default='log_progress.txt', type=str)
     parser.add_argument('-save_folder', '--save_folder', default='', type=str)
     pass
