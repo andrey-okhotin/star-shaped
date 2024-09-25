@@ -31,7 +31,7 @@ def main():
         prefix_len = len('PIPELINE_ARG.')
         for k, v in os.environ.items():
             if k[:prefix_len] == 'PIPELINE_ARG.':
-                args = args + f" -{k[:prefix_len]} {v}"
+                args = args + f" -{k[prefix_len:]} {v}"
 
     num_processes = len(list_of_gpus)
     runner = os.path.join('lib', 'console_scripts', 'PipelinesRunner.py')
