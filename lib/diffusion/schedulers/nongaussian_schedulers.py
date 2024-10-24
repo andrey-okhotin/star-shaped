@@ -67,9 +67,10 @@ def nongaussian_scheduler(scheduler, num_steps):
     elif scheduler == 'default_d3pm':
         def get_uniform_transition_mat(vocab_size, beta_t):
             mat = torch.full((vocab_size, vocab_size), beta_t/float(vocab_size))
+            mat = mat.to(torch.float32)
             diag_indices = np.diag_indices_from(mat.numpy())
             diag_val = 1 - beta_t * (vocab_size - 1) / vocab_size
-            mat[diag_indices] = diag_val
+            mat[diag_indices] = diag_val.to(torch.float32)
             return mat
         s = 0.008
         vocab_size = 27
