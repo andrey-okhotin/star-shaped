@@ -17,7 +17,7 @@ class D3PM(MarkovDiffusion):
     """
 
     def __init__(self, diffusion_config):
-        super().__init__()
+        super().__init__(diffusion_config)
         _, Q_t, cumprod_Q_t, self.time_rescaler = nongaussian_scheduler(
             diffusion_config.scheduler, self.num_steps)
         
