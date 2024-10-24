@@ -30,18 +30,20 @@ class D3PM(MarkovDiffusion):
         self.cumprod_Q_t = cumprod_Q_t[:,None,:,:]
         self.cumprod_Q_t_1 = cumprod_Q_t_1[:,None,:,:]
         
+        # mappings TO and FROM onehot representation
         self.to_domain = lambda xt: xt.argmax(dim=-1)  
-        
+        vocab_size = self.object_shape[-1]
         def to_one_hot(xt):
-            one_hot = torch.zeros_like(xt).reshape(-1,vocab_size)
-            one_hot[torch.arange(one_hot.shape[0]), xt.flatten()] = 1
+            bs, _, seqlen = xt.shape[:3]
+            one_hot = torch.zeros((bs*seqlen, vocab_size), dtype=torch.float32, device=xt.device)
+            one_hot[torch.arange(bs*seqlen), xt.flatten()] = 1
             return one_hot.reshape(bs,*self.object_shape)
         self.from_domain = lambda xt: to_one_hot(xt)
         pass
     
     
     def torch_dist(self, probs):
-        return Categorical(probs)
+        return Categorical(probs=probs)
 
     
     def forward_step_distribution(self, x0, t):
