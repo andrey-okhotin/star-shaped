@@ -55,11 +55,17 @@ git clone https://github.com/gregversteeg/NPEET.git && cd NPEET && pip install .
 ```
 Downloading content of **datasets** folder - necessary for all pipelines. This command may take about 5 minutes.
 ```bash
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Mwx2BxILkANxnzgiP005oB2Z-oHvCdyk' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1Mwx2BxILkANxnzgiP005oB2Z-oHvCdyk" -O datasets.7z && rm -rf /tmp/cookies.txt && py7zr x datasets.7z && rm datasets.7z
+RUN pip install py7zr gdown
+RUN rm -rf star-shaped/pretrained_models
+RUN gdown --fuzzy https://drive.google.com/file/d/1ndXOmbNXR6pwoJ5qs1gVP0eAKU_RAl6E/view?usp=sharing
+RUN py7zr x datasets.7z && rm datasets.7z && mv datasets star-shaped/datasets
 ```
 Downloading content of **pretrained_models** folder - not necessary for training pipelines. This command may take about 3 minutes.
 ```bash
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1qdguMPPtYLB7ZgkwMpoGwMIdQgXpIuI4' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1qdguMPPtYLB7ZgkwMpoGwMIdQgXpIuI4" -O pretrained_models.7z && rm -rf /tmp/cookies.txt && py7zr x pretrained_models.7z && rm pretrained_models.7z
+RUN pip install py7zr gdown
+RUN rm -rf star-shaped/datasets
+gdown --fuzzy https://drive.google.com/file/d/1Lebmsti31CwOFg4LYJYlWmlS7rGYQfVi/view?usp=sharing
+py7zr x pretrained_models.7z && rm pretrained_models.7z && mv pretrained_models star-shaped/pretrained_models
 ```
 
 ## Available pipelines
