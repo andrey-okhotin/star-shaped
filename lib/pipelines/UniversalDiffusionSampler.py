@@ -53,9 +53,10 @@ class UniversalDiffusionSampler:
         fprint=print
     ):
         # process and gpu coordination
-        torch.cuda.set_device(process.gpu)
-        self.model.cuda(process.gpu)
-        self.diffusion.cuda(process.gpu)
+        if process.gpu != 'cpu':
+            torch.cuda.set_device(process.gpu)
+            self.model.cuda(process.gpu)
+            self.diffusion.cuda(process.gpu)
 
         new_batch_size = 64
         prev_batch_size = self.data_generator.batch_size
