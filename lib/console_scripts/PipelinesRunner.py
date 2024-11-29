@@ -87,7 +87,10 @@ def main():
     parser.add_argument('-nr', '--nr', default=0, type=int)
     set_pipelines_arguments(parser)
     args = parser.parse_args()
-    args.gpu = tuple(map(int, args.gpu.split('_')))   
+    if args.gpu == 'cpu':
+        args.gpu = [ 'cpu' ]
+    else:
+        args.gpu = tuple(map(int, args.gpu.split('_'))) 
 
     # spawn processes with defined pipeline
     os.environ['MASTER_ADDR'] = '127.0.0.1'
