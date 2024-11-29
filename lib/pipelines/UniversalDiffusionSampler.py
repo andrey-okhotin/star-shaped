@@ -73,10 +73,14 @@ class UniversalDiffusionSampler:
         
         self.model.eval()
         with torch.no_grad():
-            torch.cuda.empty_cache()
+            if process.gpu != 'cpu':
+                torch.cuda.empty_cache()
             
             for batch_index, x0 in enumerate(self.data_generator.train_loader):
-                batch = self.data_generator.create_batch(x0, device='cuda')
+                if process.gpu != 'cpu':
+                    batch = self.data_generator.create_batch(x0, device='cuda')
+                else:
+                    batch = self.data_generator.create_batch(x0, device='cpu')
                 batch.pop('x0')
                 steps_printer.print_freq = 100
                 progress_printer = lambda t_value: steps_printer(
