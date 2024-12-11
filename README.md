@@ -56,16 +56,16 @@ git clone https://github.com/gregversteeg/NPEET.git && cd NPEET && pip install .
 Downloading content of **datasets** folder - necessary for all pipelines. This command may take about 5 minutes.
 ```bash
 pip install py7zr gdown
-rm -rf star-shaped/datasets 
+rm -rf datasets 
 gdown --fuzzy https://drive.google.com/file/d/1ndXOmbNXR6pwoJ5qs1gVP0eAKU_RAl6E/view?usp=sharing
-py7zr x datasets.7z && rm datasets.7z && mv datasets star-shaped/datasets
+py7zr x datasets.7z && rm datasets.7z
 ```
 Downloading content of **pretrained_models** folder - not necessary for training pipelines. This command may take about 3 minutes.
 ```bash
 pip install py7zr gdown
-rm -rf star-shaped/pretrained_models
+rm -rf pretrained_models
 gdown --fuzzy https://drive.google.com/file/d/1Lebmsti31CwOFg4LYJYlWmlS7rGYQfVi/view?usp=sharing
-py7zr x pretrained_models.7z && rm pretrained_models.7z && mv pretrained_models star-shaped/pretrained_models
+py7zr x pretrained_models.7z && rm pretrained_models.7z
 ```
 
 ## Available pipelines
